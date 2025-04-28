@@ -1,4 +1,5 @@
 import pygame
+from constants import SHOT_RADIUS
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -20,3 +21,8 @@ class CircleShape(pygame.sprite.Sprite):
     def update(self, dt):
         # sub-classes must override
         pass
+
+    def is_colliding(self, target):
+        if self.position.distance_to(target.position) < self.radius:
+            return True
+        else: return False
